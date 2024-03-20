@@ -6,10 +6,7 @@
 # dir2
 # dir3
 # dir4
-mkdir -p task/dir1
-mkdir -p task/dir2
-mkdir -p task/dir3
-mkdir -p task/dir4
+mkdir -p task/dir1 task/dir2 task/dir3 task/dir4
 
 # изменяем текущую директорию на task
 cd task
@@ -24,7 +21,7 @@ echo '#!/bin/bash
 echo "$1, привет!"' > dir2/hello.sh
 
 # устанавливаем для task/dir2/hello.sh права rwxrw-r--
-chmod 664 dir2/hello.sh
+chmod 764 dir2/hello.sh
 
 # сохраняем список файлов task/dir2 в task/dir2/list.txt
 ls dir2 > dir2/list.txt
@@ -44,9 +41,7 @@ NAME='Всем студентам'
 
 # запускаем task/dir2/hello.sh с переменной окружения NAME в качестве аргумента
 # вывод скрипта должен дописаться в файл task/dir1/summary.txt
-cd dir2
-./hello.sh "$NAME" >> ../dir1/summary.txt
-cd ..
+./task/dir2/hello.sh "$NAME" >> ./task/dir1/summary.txt
 
 # перемещаем с переименованием task/dir1/summary.txt в task/Практическое задание
 mv dir1/summary.txt 'Практическое задание'
